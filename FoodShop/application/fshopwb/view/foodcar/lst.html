@@ -1,0 +1,155 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" type="text/css" href="__IFOOD__/style/foodcar.css">
+    <link rel="stylesheet" type="text/css"  href="__IFOOD__/style/food.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/bootstrap.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/weather-icons.css" >
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link type="text/css" href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link type="text/css" href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link type="text/css" href="__ADMIN__/style/animate.css" rel="stylesheet">
+</head>
+<body>
+{include file="public/top"}
+
+<div class="total_count">全部商品<em></em></div>
+<ul class="cart_list_th clearfix">
+    <li class="col01">商品名称</li>
+    <li class="col02">商品单位</li>
+    <li class="col03">商品价格</li>
+    <li class="col04">数量</li>
+    <li class="col05">小计</li>
+    <li class="col06">操作</li>
+</ul>
+<form action="{:url('update')}" method="post">
+{volist name="Foodmsg" id="row" key="key"}
+    <input type="hidden" name="id[]" value="{$row.id}"/>
+    <input type="hidden" name="fid[]" value="{$row.fid}"/>
+    <input type="hidden" name="sid[]" value="{$row.sid}"/>
+    <input type="hidden" name="cname[]" value="{$row.cname}"/>
+    <input type="hidden" name="image[]" value="{$row.image}"/>
+    <input type="hidden" name="uname[]" value="{$Request.session.name}"/>
+    <input type="hidden" name="price[]"  value="{$row.price}"/>
+    <input type="hidden" name="unit[]"  value="{$row.unit}"/>
+    <input type="hidden" name="introduce[]"  value="{$row.introduce}"/>
+<ul class="cart_list_td clearfix">
+    <li class="col01"><input type="checkbox" style="width: 50px;height: 50px;"/>{$key}</li>
+    <li class="col02"><img src="__IFOOD__/images/{$row.image}"></li>
+    <li class="col03">{$row.cname}<br><em>{$row.price}/{$row.unit}</em></li>
+    <li class="col04">{$row.unit}</li>
+    <li class="col05"><input id="tprice{$key}" value="{$row.price}" style="width: 40px;height: 30px;border: none;text-align: center"disabled/>￥</li>
+    <li class="col06">
+        <div class="num_add">
+            <a href="javascript:;" class="add fl" onclick="add({$key})">+</a>
+            <input type="text" class="num_show fl" name="number[]" id="num{$key}"  value="{$row.number}">
+            <a href="javascript:;" class="minus fl" onclick="del({$key})">-</a>
+        </div>
+    </li>
+    <li class="col07"><input id="thisprice{$key}"  value="{$row.price*$row.number}" style="width: 30px;height: 30px;border: none;text-align: center"disabled/>￥</li>
+    <input type="hidden" name="spend[]" value="{$row.price*$row.number}"/>
+    <li class="col08"><a href="javascript:;" onClick="warning('确实要删除吗', 'delete?id={$row.id}')">删除</a></li>
+</ul>
+{/volist}
+
+
+
+<ul class="settlements">
+    <li class="col03">合计(不含运费)：<span>¥</span><em id="total"></em><br>共计<b id="number">2</b>件商品</li>
+    <li class="col04"><input type="submit" value="去结算"/></li>
+</ul>
+</form>
+<script>
+    window.onload=function(){
+       var total=document.getElementById('total');
+        var tnumber=document.getElementById('number');
+        var tot=0;
+        var thisnum=0;
+        var num_show=document.getElementsByClassName('num_show').length;
+
+       // alert(num_show);
+        for(var i=1;i<=num_show;i++){
+            var othisprice=document.getElementById('thisprice'+i).value;
+            var onum=document.getElementById('num'+i).value;
+            othisprice=parseInt(othisprice);
+            onum=parseInt(onum);
+            thisnum+=onum;
+            tot+=othisprice;
+        }
+        total.innerHTML=tot;
+        tnumber.innerHTML=thisnum;
+    }
+    function add(key){
+        var num=document.getElementById('num'+key);
+        var tprice=document.getElementById('tprice'+key).value;
+        var number=num.value;
+        number=parseInt(number);
+        number=number+1;
+       num.value=number;
+        //alert({$row.price});
+        var thisprice=document.getElementById('thisprice'+key);
+        thisprice.value=tprice*number;
+        var total=document.getElementById('total');
+        var tnumber=document.getElementById('number');
+        var tot=0;
+        var thisnum=0;
+        var num_show=document.getElementsByClassName('num_show').length;
+
+        // alert(num_show);
+        for(var i=1;i<=num_show;i++){
+            var othisprice=document.getElementById('thisprice'+i).value;
+            var onum=document.getElementById('num'+i).value;
+            othisprice=parseInt(othisprice);
+            onum=parseInt(onum);
+            thisnum+=onum;
+            tot+=othisprice;
+        }
+        total.innerHTML=tot;
+        tnumber.innerHTML=thisnum;
+    }
+    function del(key){
+        var num=document.getElementById('num'+key);
+        var tprice=document.getElementById('tprice'+key).value;
+        var number=num.value;
+        number=parseInt(number);
+        if(number-1==0){
+            alert('商品最低限额为1，不需要请删除！');
+        }else {
+            number=number-1;
+            num.value=number;
+            var thisprice=document.getElementById('thisprice'+key);
+            thisprice.value=tprice*number;
+            var total=document.getElementById('total');
+            var tnumber=document.getElementById('number');
+            var tot=0;
+            var thisnum=0;
+            var num_show=document.getElementsByClassName('num_show').length;
+
+            // alert(num_show);
+            for(var i=1;i<=num_show;i++){
+                var othisprice=document.getElementById('thisprice'+i).value;
+                var onum=document.getElementById('num'+i).value;
+                othisprice=parseInt(othisprice);
+                onum=parseInt(onum);
+                thisnum+=onum;
+                tot+=othisprice;
+            }
+            total.innerHTML=tot;
+            tnumber.innerHTML=thisnum;
+        }
+
+    }
+</script>
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__ADMIN__/style/beyond.js"></script>
+</body>
+</html>

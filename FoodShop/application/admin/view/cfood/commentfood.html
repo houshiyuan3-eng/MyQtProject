@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <title>在线订餐网站后台</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- 头部 -->
+{include file="public/top"}
+
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {include file="public/left"}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">系统</a>
+                    </li>
+                    <li class="active">餐品管理</li>
+                    <li class="active"><a href="{:url('admin/cfood/lst')}">餐品列表</a></li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+
+
+                <div class="widget-buttons">
+                    <div class="btn-group ">
+                        <a class="btn btn-azure btn-sm " href="javascript:void(0);">推荐筛选</a>
+                        <a class="btn btn-azure btn-sm dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu dropdown-blue pull-left">
+                            <li>
+                                <a href="cmtclassify?id=1">点心/蛋糕</a>
+                            </li><li class="divider"></li>
+                            <li>
+                                <a href="cmtclassify?id=2">饼干膨化</a>
+                            </li><li class="divider"></li>
+                            <li>
+                                <a href="cmtclassify?id=3">熟食肉类</a>
+                            </li><li class="divider"></li>
+                            <li>
+                                <a href="cmtclassify?id=4">素食卤味</a>
+                            </li><li class="divider"></li>
+                            <li>
+                                <a href="cmtclassify?id=5">海鲜、河鲜</a>
+                            </li><li class="divider"></li>
+                            <li>
+                                <a href="cmtclassify?id=6">花茶、奶茶</a>
+                            </li><li class="divider"></li>
+                            <li>
+                                <a href="cmtclassify?id=7">家常小菜</a>
+                            </li><li class="divider"></li>
+                            <li>
+                                <a href="cmtclassify?id=8">快餐简食</a>
+                            </li><li class="divider"></li>
+                            <li>
+                                <a href="cmtclassify?id=9">蔬菜水果</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-body">
+                                <div class="flip-scroll">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="text-center">序号</th>
+                                            <th class="text-center">食物图片</th>
+                                            <th class="text-center">食物名称</th>
+                                            <th class="text-center">所属分类</th>
+                                            <th class="text-center">食品价格</th>
+                                            <th class="text-center">食品单价</th>
+                                            <th class="text-center">食品介绍</th>
+                                            <th class="text-center">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <!--name 接收后台数据 id命名 key数字排列-->
+                                        {volist name="rows" id="row" key="key"}
+                                        <tr>
+                                            <td align="center">{$key}</td>
+                                            <td align="center"><img src="__IFOOD__/images/{$row.image}" style="width: 70px;height: 35px;" ></td>
+                                            <td align="center">{$row.cname}</td>
+                                            {if condition="$row.uid eq '1'"}<td align="center">点心/蛋糕</td>{/if}
+                                            {if condition="$row.uid eq '2'"}<td align="center">饼干膨化</td>{/if}
+                                            {if condition="$row.uid eq '3'"}<td align="center">熟食肉类</td>{/if}
+                                            {if condition="$row.uid eq '4'"}<td align="center">素食卤味</td>{/if}
+                                            {if condition="$row.uid eq '5'"}<td align="center">海鲜、河鲜</td>{/if}
+                                            {if condition="$row.uid eq '6'"}<td align="center">花茶、奶茶</td>{/if}
+                                            {if condition="$row.uid eq '7'"}<td align="center">家常小菜</td>{/if}
+                                            {if condition="$row.uid eq '8'"}<td align="center">快餐简食</td>{/if}
+                                            {if condition="$row.uid eq '9'"}<td align="center">蔬菜水果</td>{/if}
+                                            <td align="center">{$row.price}</td>
+                                            <td align="center">{$row.unit}</td>
+                                            <td align="center">{$row.introduce}</td>
+                                            <td align="center" class="col-sm-4">
+
+                                                <a  href="edit?id={$row.id}"
+                                                    class="btn btn-primary btn-sm shiny">
+                                                    <i class="fa fa-edit"></i> 编辑
+                                                </a>
+                                                <a href="#" onClick="warning('确实要删除吗', 'delete?id={$row.id}')" class="btn btn-danger btn-sm shiny">
+                                                    <i class="fa fa-trash-o"></i> 移除推荐
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                        {/volist}
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__ADMIN__/style/beyond.js"></script>
+
+
+</body></html>

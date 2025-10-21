@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>在线订餐网站后台</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    <script src="__ADMIN__/ueditor/ueditor.config.js"></script>
+    <script src="__ADMIN__/ueditor/ueditor.all.min.js"></script>
+    <script src="__ADMIN__/ueditor/lang/zh-cn/zh-cn.js"></script>
+    
+</head>
+<body>
+{include file="public/top"}
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="public/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li>
+                        <a href="#">餐品列表</a>
+                    </li>
+                                        <li class="active">添加餐品</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row" style="margin-left: 60px">
+    <div class="col-lg-10s col-sm-8 col-xs-8s text-center">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">添加餐品</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="{:url('insertfood')}" method="post">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">所属分类</label>
+                            <div class="col-sm-3">
+                                <select name="uid">
+                                    <option>选食物分类</option>
+                                    <option  value="1">点心/蛋糕</option>
+                                    <option  value="2">饼干膨化</option>
+                                    <option  value="3">熟食肉类</option>
+                                    <option  value="4">素食卤味</option>
+                                    <option  value="5">海鲜、河鲜</option>
+                                    <option  value="6">花茶、奶茶</option>
+                                    <option  value="7">家常小菜</option>
+                                    <option  value="8">快餐简食</option>
+                                    <option  value="9">蔬菜水果</option>
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-1 red"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">食物图片</label>
+                            <div class="col-sm-6">
+                              <input type="file" name="image">
+                            </div>
+                            <p class="help-block col-sm-1 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">食品名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="cname" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">食品单价</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  placeholder="" name="price" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">（单位：元）</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">信息介绍</label>
+                            <div class="col-sm-6">
+                                <textarea id="content" name="introduce"></textarea>
+                            </div>
+                            <p class="help-block col-sm-1 red">* 必填</p>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-2">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    UE.getEditor('content',{initialFrameWidth:550,initialFrameHeight:200,});
+
+
+
+</script>
+
+
+</body></html>

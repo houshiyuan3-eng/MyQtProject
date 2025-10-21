@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>在线订餐网站</title>
+
+    <!--<meta name="description" content="Dashboard">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+    <link rel="stylesheet" type="text/css"  href="__IFOOD__/style/food.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/bootstrap.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/weather-icons.css" >
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link type="text/css" href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link type="text/css" href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link type="text/css" href="__ADMIN__/style/animate.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="food_top">
+
+    {include file="public/top"}
+
+
+
+</div>
+<div class="logo">
+    <div class="logo_center">
+
+    </div>
+</div>
+
+<!--轮播图区域-->
+<div class="new">
+    <div class="new_nav">
+        <ul>
+            <li>
+                <div class="new_nav_li_left">点心蛋糕</div>
+                <div class="new_nav_li_right">  > </div>
+                <div id="foodbox" >
+                    {volist name='fooda' id='fooda'}
+                    <div><a href="foodinfo?id={$fooda.id}">{$fooda.cname}</a></div>
+                    {/volist}
+                </div>
+            </li>
+            <li>
+                <div class="new_nav_li_left">饼干膨化</div>
+                <div class="new_nav_li_right">  > </div>
+                <div id="foodbox" >
+                    {volist name='foodb' id='foodb'}
+                    <div><a href="foodinfo?id={$foodb.id}">{$foodb.cname}</a></div>
+                    {/volist}
+                </div>
+            </li>
+            <li>
+                <div class="new_nav_li_left">熟食肉类</div>
+                <div class="new_nav_li_right">  > </div>
+                <div id="foodbox" >
+                    {volist name='foodc' id='foodc'}
+                    <div><a href="foodinfo?id={$foodc.id}">{$foodc.cname}</a></div>
+                    {/volist}
+                </div>
+            </li>
+            <li>
+                <div class="new_nav_li_left">素食卤味</div>
+                <div class="new_nav_li_right">  > </div>
+                <div id="foodbox" >
+                    {volist name='foodd' id='foodd'}
+                    <div><a href="foodinfo?id={$foodd.id}">{$foodd.cname}</a></div>
+                    {/volist}
+                </div>
+            </li>
+            <li>
+                <div class="new_nav_li_left">海鲜河鲜</div>
+                <div class="new_nav_li_right">  > </div>
+                <div id="foodbox" >
+                    {volist name='foode' id='foode'}
+                    <div><a href="foodinfo?id={$foode.id}">{$foode.cname}</a></div>
+                    {/volist}
+                </div>
+            </li>
+            <li>
+                <div class="new_nav_li_left">花茶奶茶</div>
+                <div class="new_nav_li_right">  > </div>
+                <div id="foodbox" >
+                    {volist name='foodf' id='foodf'}
+                    <div><a href="foodinfo?id={$foodf.id}">{$foodf.cname}</a></div>
+                    {/volist}
+                </div>
+            </li>
+            <li>
+                <div class="new_nav_li_left">家常小菜</div>
+                <div class="new_nav_li_right">  > </div>
+                <div id="foodbox" >
+                    {volist name='foodg' id='foodg'}
+                    <div><a href="foodinfo?id={$foodg.id}">{$foodg.cname}</a></div>
+                    {/volist}
+                </div>
+            </li>
+            <li>
+                <div class="new_nav_li_left">快餐简食</div>
+                <div class="new_nav_li_right">  > </div>
+                <div id="foodbox" >
+                    {volist name='foodh' id='foodh'}
+                    <div><a href="foodinfo?id={$foodh.id}">{$foodh.cname}</a></div>
+                    {/volist}
+                </div>
+            </li>
+            <li>
+                <div class="new_nav_li_left">蔬菜水果</div>
+                <div class="new_nav_li_right">  > </div>
+                <div id="foodbox" >
+                    {volist name='foodi' id='foodi'}
+                    <div><a href="foodinfo?id={$foodi.id}">{$foodi.cname}</a></div>
+                    {/volist}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--轮播图-->
+    <div id="new_img">
+        <ul id="pic">
+            <!--<li class="active"><img src="__IFOOD__/images/1.jpg" /></li>-->
+            {volist name="imgmsg" id="row" key="key"}
+            <li class=""><img src="__IFOOD__/images/{$row.adress}" style="width: 1000px;height: 400px" /></li>
+            {/volist}
+        </ul>
+        <!--下部黑影-->
+        <div id="bloack">
+            <div id="boxa">
+                {volist name="imgmsg" id="row" key="key"}
+                <input id="value" class="" type="text"  value="{$row.title}" readonly="readonly" />
+                {/volist}
+            </div>
+
+            <ul id="dot">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div><!--block结束-->
+
+        <div id="new_left"><span style="color:rgba(255,255,255,1); line-height:60px; margin-left:5px; font-size:36px;">&lt;</span></div>
+        <div id="new_right"><span style="color:rgba(255,255,255,1); line-height:60px; margin-left:17px; font-size:36px;">&gt;</span></div>
+    </div><!--new_img结束-->
+</div><!--new结束-->
+
+<!--广告推销-->
+<div class="adv">
+    <div class="adv_center">
+        <div id="adv_center_top">
+            <ol>
+                <li id="tab1" onclick="f(1)" class="style">推荐餐品</li>
+                <li id="tab2" onclick="f(2)">折扣餐品</li>
+            </ol>
+        </div>
+        <div class="adv_center_buttom">
+            <div class="tab_box" id="tab1_box" style="display: block">
+                <div>
+                    {volist name="comment" id="row" key="key"}
+                    <div class="tab_box_msg">
+                        <div class="tab_box_img"><a href="foodinfo?id={$row.id}"><img src="__IFOOD__/images/{$row.image}" style="width: 170px;height: 160px" /></a></div>
+                        <div class="tab_box_txt">{$row.cname}</div>
+                        <div class="tab_box_pic">￥{$row.price}{$row.unit}</div>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+            <div class="tab_box" id="tab2_box">
+                <div>
+                    {volist name="discount" id="row" key="key"}
+                    <div class="tab_box_msg">
+                        <div class="tab_box_img"><a href="foodinfo?id={$row.id}"><img src="__IFOOD__/images/{$row.image}" style="width: 170px;height: 160px" /></a></div>
+                        <div class="tab_box_txt">{$row.cname}</div>
+                        <div class="tab_box_pic">￥{$row.price}{$row.unit}</div>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="__IFOOD__/style/javascript.js"></script>
+<!--<script src="__ADMIN__/style/bootstrap.js"></script>-->
+<!--<script src="__ADMIN__/style/jquery.js"></script>-->
+<!--&lt;!&ndash;Beyond Scripts&ndash;&gt;-->
+<!--<script src="__ADMIN__/style/beyond.js"></script>-->
+</html>

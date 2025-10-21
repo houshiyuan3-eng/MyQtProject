@@ -1,0 +1,25 @@
+<div class="food_top">
+
+    <div class="food_top_center">
+        <ul>
+            <li style="clear: right"><a href="{:url('foodcar/lst')}">我的购物车</a></li>
+            <li><a href="{:url('userinfo/infoindex')}">个人中心</a></li>
+            <li><a href="{:url('userorder/lst')}">我的订单</a></li>
+            <li {if condition="$Request.session.name neq '' "}style="display: none;"{/if} ><a href="{:url('user/login')}">登录</a></li>
+            <li><a href="{:url('index/index')}">主页</a></li>
+        </ul>
+    </div>
+
+    <div class="food_top_left">
+        <ul>
+            <li>
+                <a>{if condition="$Request.session.name eq '' "}请您登陆{else/}欢迎：{$Request.session.name}{/if}</a>
+                <ul>
+                    <li><a href="{:url('fshopwb/index/loginout')}">安全退出</a></li>
+                    <li>信息修改</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</div>

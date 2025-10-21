@@ -1,0 +1,122 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>提交订单</title>
+    <link rel="stylesheet" type="text/css" href="__IFOOD__/style/foodcar.css">
+    <link rel="stylesheet" type="text/css"  href="__IFOOD__/style/food.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/bootstrap.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/weather-icons.css" >
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link type="text/css" href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link type="text/css" href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link type="text/css" href="__ADMIN__/style/animate.css" rel="stylesheet">
+</head>
+<body>
+{include file="public/top"}
+
+
+
+<h3 class="common_title">确认收货地址</h3>
+
+<div class="common_list_con clearfix">
+    <dl>
+        <dt>送餐到：</dt>
+        <dd><input type="radio" name="" checked="">{$Userinfo.province}　{$Userinfo.city}　{$Userinfo.town}　{$Userinfo.address} ({$Userinfo.uname}　收)　　{$Userinfo.phone}</dd>
+    </dl>
+    <a href="{:url('userinfo/infoedit')}" class="edit_site">编辑收货地址</a>
+
+</div>
+
+<h3 class="common_title">支付方式</h3>
+<div class="common_list_con clearfix">
+    <div class="pay_style_con clearfix">
+        <input type="radio" name="pay_style" checked>
+        <label class="cash"> <img src="__IFOOD__/images/car.png" width="40px" height="40px" />货到付款</label>
+        <label class="weixin"><img src="__IFOOD__/images/weixin.png" width="40px" height="40px" />微信支付</label>
+        <input type="radio" name="pay_style">
+        <label class="zhifubao"><img src="__IFOOD__/images/zhifubao.png" width="80px" height=40px" /></label>
+        <input type="radio" name="pay_style">
+        <label class="bank"><img src="__IFOOD__/images/bank.png" width="40px" height="40px" />银行卡支付</label>
+    </div>
+</div>
+
+<h3 class="common_title">商品列表</h3>
+
+<div class="common_list_con clearfix">
+    <ul class="goods_list_th clearfix">
+        <li class="col01">商品名称</li>
+        <li class="col02">商品单位</li>
+        <li class="col03">商品价格(元)</li>
+        <li class="col04">数量</li>
+        <li class="col05">小计</li>
+    </ul>
+    {volist name="Foodmsg" id="row" key="key"}
+    <ul class="goods_list_td clearfix">
+        <li class="col01">{$key}</li>
+        <li class="col02"><img src="__IFOOD__/images/{$row.image}"></li>
+        <li class="col03">{$row.cname}</li>
+        <li class="col04">{$row.unit}</li>
+        <li class="col05">{$row.price}</li>
+        <li class="col06" id="number{$key}">{$row.number}</li>
+        <li class="col07" id="total{$key}">{$row.number*$row.price}</li>
+    </ul>
+    {/volist}
+</div>
+
+<h3 class="common_title">总金额结算</h3>
+
+<div class="common_list_con clearfix">
+    <div class="settle_con">
+        <div class="total_goods_count">共<em id="thisnum"></em>件商品，总金额<b id="thistot"></b></div>
+        <div class="transit">派送费：<b>10元</b></div>
+        <div class="total_pay" >实付款：<b id="thispay" style="font-size: 18px"></b></div>
+    </div>
+</div>
+
+<div class="order_submit clearfix">
+    <form action="{:url('sendfood')}" method="post">
+        {volist name="Foodmsg" id="row" key="key"}
+        <input type="hidden" name="id[]" value="{$row.id}"/>
+        <input type="hidden" name="fid[]" value="{$row.fid}"/>
+        <input type="hidden" name="sid[]" value="{$row.sid}"/>
+        <input type="hidden" name="image[]" value="{$row.image}"/>
+        <input type="hidden" name="uname[]" value="{$Request.session.name}"/>
+        <input type="hidden" name="price[]" value="{$row.price}"/>
+        <input type="hidden" name="unit[]" value="{$row.unit}"/>
+        <input type="hidden" name="number[]" value="{$row.number}"/>
+        <input type="hidden" name="cname[]" value="{$row.cname}"/>
+        <input type="hidden" name="spend[]"   value="{$row.number*$row.price}"/>
+        {/volist}
+        <input type="submit" value="提交订单" id="order_btn"/>
+        <!--<a href="javascript:;" id="order_btn"></a>-->
+    </form>
+
+</div>
+
+
+
+
+
+</body>
+<script>
+    var c=document.getElementsByClassName('goods_list_td');
+    var num=0;
+    var tot=0;
+    for(var i=1;i<= c.length;i++){
+        var number=document.getElementById('number'+i).innerHTML;
+        var total=document.getElementById('total'+i).innerHTML;
+        number=parseInt(number);
+        total=parseInt(total);
+        num+=number;
+        tot+=total;
+    }
+    document.getElementById('thisnum').innerHTML=num;
+    document.getElementById('thistot').innerHTML=tot+'元';
+    document.getElementById('thispay').innerHTML=tot+10+'元';
+</script>
+</html>

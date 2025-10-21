@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>餐品列表</title>
+    <link rel="stylesheet" type="text/css" href="__IFOOD__/style/foodcar.css">
+    <link rel="stylesheet" type="text/css" href="__IFOOD__/style/foodinfo.css">
+    <link rel="stylesheet" type="text/css"  href="__IFOOD__/style/food.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/bootstrap.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="__ADMIN__/style/weather-icons.css" >
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link type="text/css" href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link type="text/css" href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link type="text/css" href="__ADMIN__/style/animate.css" rel="stylesheet">
+</head>
+<body>
+{include file="public/top"}
+<div class="box">
+    <div class="box_center">
+        <form method="post" action="{:url('addfoodcar')}">
+            <input type="hidden" name="fid" value="{$Foodinfo.id}">
+            <input type="hidden" name="sid" value="{$Request.session.id}">
+            <input type="hidden" name="image" value="{$Foodinfo.image}">
+            <input type="hidden" name="cname" value="{$Foodinfo.cname}">
+            <input type="hidden" name="price" value="{$Foodinfo.price}">
+            <input type="hidden" name="unit" value="{$Foodinfo.unit}">
+            <input type="hidden" name="introduce" value="{$Foodinfo.introduce}">
+        <div class="msg_left">
+           <div class="imgs"><img src="__IFOOD__/images/{$Foodinfo.image}" style="width: 200px;height: 200px; "></div>
+        </div>
+        <div class="msg_center">
+            <ul>
+                <li>餐品名称{$Foodinfo.cname}</li>
+                <li>原价：{$Foodinfo.price}</li>
+                <li>会员价格：{$Foodinfo.price*0.85}</li>
+                <li>单位：{$Foodinfo.unit}</li>
+                <li>购买数量：<input style="width: 30px; height: 30px;"  type="text" name="number" value="1"  ></li>
+            </ul>
+            <div class="sbt"><input type="submit" style="" value="添加到购物车"></div>
+        </div>
+        <div class="msg_right">
+            <h2 style="font-weight: 800">餐品介绍：</h2>
+            <div style="font-size: 15px">{$Foodinfo.introduce}</div>
+        </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
