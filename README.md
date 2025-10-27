@@ -87,3 +87,48 @@ Practice projects
 
 ![image](https://private-user-images.githubusercontent.com/239273274/503547058-fc5ba4d8-fe2a-497e-bc27-5a91190b4240.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjEwNDUyMjYsIm5iZiI6MTc2MTA0NDkyNiwicGF0aCI6Ii8yMzkyNzMyNzQvNTAzNTQ3MDU4LWZjNWJhNGQ4LWZlMmEtNDk3ZS1iYzI3LTVhOTExOTBiNDI0MC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMDIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTAyMVQxMTA4NDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yZmZmNzgyNTkwN2E0NTAxZWVmMGY5YTFmNjRkYWVhMTRmN2ZiMWM0Zjg1N2UxMjUyODhkZDMxNzk5Yjc2YTI2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.GYzO-bc9POZPxQ9-dlhXizCo-XMWc8PvTs2vh7caGd8)
 =======
+### MyWeather
+
+<img width="433" height="846" alt="image" src="https://github.com/user-attachments/assets/7fa808f1-0e1f-4c98-a940-a7e0b4e30b95" />
+
+🌟 主要功能
+
+1. **界面设计**
+
+- 无边框窗口（`Qt::FramelessWindowHint`），可拖拽移动。
+- 右键菜单支持退出应用。
+- 显示未来 7 天（实际展示前 6 天）的天气信息，包括：日期、天气状况、温度范围、风力风向、湿度、气压等。当前城市天气概况（温度、天气图标、风力等）。
+- 包含两个自定义绘图区域（`widget_hightemp`和 `widget_lowtemp`），用于绘制最高/最低温度变化折线图。
+
+------
+
+1. **天气数据获取**
+
+- 通过 **和风天气 API（QWeather）** 获取实时及未来天气数据。
+- 默认城市为“焦作”，也可通过输入框自定义城市。
+- 城市名称通过本地 JSON 文件（`:city_pinyin.json`）转换为城市编码，再请求对应天气数据。
+- 使用 `QNetworkAccessManager`异步请求网络数据，解析返回的 **JSON 格式天气信息**。
+
+------
+
+1. **数据解析与显示**
+
+- 解析返回的 JSON 数据，提取如下信息并显示到 UI 控件：日期（`fxDate`）、天气描述（`textDay`）、最高/最低温（`tempMax`/ `tempMin`）、风力、风向、湿度、气压、月落时间等。根据天气状况（如“晴”、“雨”、“雪”等），通过预定义的 `QPixmap`图标映射（`iconurl`），显示对应的天气图标。
+- 将未来几天的最高/最低温度分别存储在 `hightemp`和 `lowtemp`列表中，用于后续绘图。
+
+------
+
+1. **交互功能**
+
+- 支持通过鼠标左键拖动窗口。
+- 鼠标右键弹出退出菜单。
+- 输入框回车或点击按钮均可触发查询天气。
+- 自定义控件绘图事件（`eventFilter`），在指定 widget 上绘制最高/最低温度的折线图：以平均温度为基准，将每日温度以散点 + 连线的形式可视化。温度点用黄色圆点表示，并标注具体温度值。
+
+------
+
+1. **绘图功能（自定义绘图）**
+
+- `drawHighTempLine()`：绘制最高温度折线图。
+- `drawLowTempLine()`：绘制最低温度折线图。
+- 使用 `QPainter`在自定义 widget 上绘制：温度点（椭圆）连接线温度数值文本标注
