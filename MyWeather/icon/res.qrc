@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon_baoxue.png</file>
+        <file>icon_baoyu.png</file>
+        <file>icon_daxue.png</file>
+        <file>icon_dayu.png</file>
+        <file>icon_duoyun.png</file>
+        <file>icon_fuchen.png</file>
+        <file>icon_leizhenyu.png</file>
+        <file>icon_qingtian.png</file>
+        <file>icon_shachenbao.png</file>
+        <file>icon_wu.png</file>
+        <file>icon_wushuju.png</file>
+        <file>icon_xiaoxue.png</file>
+        <file>icon_xiaoyu.png</file>
+        <file>icon_yangsha.png</file>
+        <file>icon_yejianduoyun.png</file>
+        <file>icon_yejianqingtian.png</file>
+        <file>icon_yejianwu.png</file>
+        <file>icon_yintian.png</file>
+        <file>icon_zhenxue.png</file>
+        <file>icon_zhenyu.png</file>
+        <file>icon_zhongxue.png</file>
+        <file>icon_zhongyu.png</file>
+        <file>search.png</file>
+        <file>kongqizhiliang.png</file>
+        <file>PM.png</file>
+        <file>shidu.png</file>
+        <file>fengli.png</file>
+        <file>tuichu.png</file>
+        <file>city_pinyin.json</file>
+    </qresource>
+</RCC>

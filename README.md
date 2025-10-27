@@ -25,6 +25,8 @@ Practice projects
 
 
 <img width="2537" height="1355" alt="image" src="https://github.com/user-attachments/assets/60988212-5299-41f0-a5b3-ceb686959f2f" />
+=======
+
 
 ### MyAssistant:
 
@@ -84,3 +86,4 @@ Practice projects
 2，MySimpleCarRate简单汽车仪表盘
 
 ![image](https://private-user-images.githubusercontent.com/239273274/503547058-fc5ba4d8-fe2a-497e-bc27-5a91190b4240.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjEwNDUyMjYsIm5iZiI6MTc2MTA0NDkyNiwicGF0aCI6Ii8yMzkyNzMyNzQvNTAzNTQ3MDU4LWZjNWJhNGQ4LWZlMmEtNDk3ZS1iYzI3LTVhOTExOTBiNDI0MC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMDIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTAyMVQxMTA4NDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yZmZmNzgyNTkwN2E0NTAxZWVmMGY5YTFmNjRkYWVhMTRmN2ZiMWM0Zjg1N2UxMjUyODhkZDMxNzk5Yjc2YTI2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.GYzO-bc9POZPxQ9-dlhXizCo-XMWc8PvTs2vh7caGd8)
+=======
