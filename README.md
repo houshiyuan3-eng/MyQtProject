@@ -132,3 +132,71 @@ Practice projects
 - `drawHighTempLine()`：绘制最高温度折线图。
 - `drawLowTempLine()`：绘制最低温度折线图。
 - 使用 `QPainter`在自定义 widget 上绘制：温度点（椭圆）连接线温度数值文本标注
+
+### Qt_simpleWord
+<img width="883" height="657" alt="image" src="https://github.com/user-attachments/assets/4da3c012-1c94-4db5-8339-3fc6e926eb1c" />
+
+这个程序是一个带工具栏、状态栏和文件操作的文字编辑器。
+支持：
+
+- 打开、保存、新建文本文件
+- 修改字体、字号、加粗、斜体、下划线
+- 通过工具栏和快捷键调整文字格式
+- 显示当前文件名、字体大小进度条、光标所在行列位置
+
+### Qt_TreeWidget
+<img width="917" height="713" alt="image" src="https://github.com/user-attachments/assets/67333435-fc3b-4f62-b5cb-e6fb68d67b94" />
+
+这是一个使用 **QMainWindow + QTreeWidget + QLabel + QDockWidget** 构建的
+**图片管理与浏览工具**。
+
+主要功能包括：
+
+- 📂 建立图片目录树（分组显示文件夹与图片）
+- 🖼️ 加载、显示和缩放图片
+- ➕ 添加图片或文件夹到树结构
+- ❌ 删除图片节点
+- 🔍 控制图片显示比例（原始尺寸、适应宽/高、放大、缩小）
+- 🪟 控制停靠窗口（显示/隐藏、浮动/嵌入）
+
+### Qt_tableWidget
+<img width="901" height="588" alt="image" src="https://github.com/user-attachments/assets/13d0d671-95f6-420a-b718-291aa71f16d5" />
+
+这是一个图形化的 **学生信息表管理工具**，支持：
+
+- 设置表头（列标题）
+- 生成指定数量的学生信息（随机分数、姓名、性别等）
+- 插入 / 删除 / 添加表格行
+- 自动调整行列宽高
+- 控制表格编辑、行列头显示、隔行变色
+- 从表格中读取数据并在文本框中输出汇总信息
+- 控制选择模式（单元格选择 / 整行选择）
+
+### Qt_QstringListModel
+<img width="612" height="584" alt="image" src="https://github.com/user-attachments/assets/fcf6dfc2-ec28-46b9-9ed9-2d923dac6daa" />
+
+这是一个简易的 **列表管理工具**，主要功能包括：
+
+- 显示城市名称列表
+- 支持编辑（可开启/关闭）
+- 添加、插入、删除列表项
+- 向上/向下移动选中项
+- 升序/降序排序
+- 显示当前项的信息（行列号 + 内容）
+- 将所有列表项输出到文本框中查看
+
+### Qt_QtableView
+<img width="1064" height="724" alt="image" src="https://github.com/user-attachments/assets/7340b50f-8ac2-4a7e-a169-9a02c6cae9f2" />
+
+这个程序的主要功能是：
+
+> 📄 从文本文件读取数据 → 按表格形式显示 → 支持编辑、插入、删除、对齐、加粗等操作 → 可重新输出表格内容。
+
+具体功能包括：
+
+- 打开 `.txt` 数据文件并解析为表格显示
+- 状态栏显示当前文件名、当前单元格位置与内容
+- 在表格中插入、追加、删除行
+- 控制单元格文本对齐（左/右/居中）
+- 设置单元格字体是否加粗
+- 重新读取（导出）表格数据到文本框显示
