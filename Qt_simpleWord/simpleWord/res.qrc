@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/bendiwenjian.png</file>
+        <file>icon/jiacu.png</file>
+        <file>icon/juyou.png</file>
+        <file>icon/juzhong.png</file>
+        <file>icon/juzuo.png</file>
+        <file>icon/morenwenjian.png</file>
+        <file>icon/qingxie.png</file>
+        <file>icon/txtwenjian.png</file>
+        <file>icon/xiahuaxian.png</file>
+        <file>icon/ziti.png</file>
+        <file>icon/zitidaxiao.png</file>
+        <file>icon/chinese.png</file>
+        <file>icon/english.png</file>
+    </qresource>
+</RCC>

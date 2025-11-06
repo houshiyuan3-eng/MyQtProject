@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>icon/nan.png</file>
+        <file>icon/nv.png</file>
+    </qresource>
+</RCC>
